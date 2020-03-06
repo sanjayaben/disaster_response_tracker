@@ -1,0 +1,41 @@
+{% extends "master.html" %}
+{% block title %}Results{% endblock %}
+
+{% block message %}
+    <hr />
+    <h4 class="text-center">MESSAGE</h4>
+    <p class="text-center"><i>{{query}}</i></p>
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Result</h1>
+        <ul class="list-group">
+            {% for category, classification in classification_result.items() %}
+                {% if classification == 1 %}
+                    <li class="list-group-item list-group-item-success text-center"><b>{{category.replace('_', ' ').title()}}</b>
+          			{% if category.replace('_', ' ').title() in ['Request','Related','Offer','Aid Related','Medical Help','Medical Products','Other Aid','Hospitals'] %}
+                      <i> - <a href='https://www.who.int/'> contact World Health Organisation</a></i>
+                    {% endif %}
+                    {% if category.replace('_', ' ').title() in ['Search And Rescue','Security','Military','Child Alone','Missing People','Death'] %}
+                      <i> - <a href='http://www.ussartf.org/'> contact Search and Rescue Task Force</i>
+                    {% endif %}
+                    {% if category.replace('_', ' ').title() in ['Water','Food','Shelter','Clothing','Money','Refugees','Infrastructure Related','Transport','Buildings','Electricity','Shops','Other','Infrastructure'] %}
+                      <i> - <a href='https://www2.ed.gov/about/offices/list/osers/rsa/index.html'> contact Social Welfare services</i>
+                    {% endif %}
+                    {% if category.replace('_', ' ').title() in ['Weather Related','Floods','Storm','Fire','Earthquake','Cold','Other Weather'] %}
+                      <i> - <a href='https://www.doi.gov/recovery'> contact Natural Disaster Response</i>
+                    {% endif %}
+          			</li>
+                {% else %}
+<!--                     <li class="list-group-item list-group-item-dark text-center">{{category.replace('_', ' ').title()}}</li> -->
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
