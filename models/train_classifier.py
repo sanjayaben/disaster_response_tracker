@@ -34,6 +34,7 @@ def load_data(database_filepath,profile):
     #Load data from the database
     engine = create_engine('sqlite:///'+database_filepath)
     df = pd.read_sql("select * from messages_flattened", engine)
+    #In the dev mode we only load limited number of rows to keep the training time down
     if profile == 'dev':
         print('Running dev mode !!!!!!!!!!')
         df = df.head(5000)
@@ -98,7 +99,7 @@ def build_model(profile):
     ('clf', MultiOutputClassifier(RandomForestClassifier()))])
     
     parameters = {}
-    
+    #In the dev profile we only use few parameters to keep the training time down
     if profile == 'dev':
         parameters = {
             'vect__max_df': (0.5, 1.0),
