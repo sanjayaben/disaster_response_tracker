@@ -10,7 +10,7 @@ The objective of the project is to illustrate how a machine learning pipeline co
 ### File Descriptions
 1. 'data' directory contains the python script 'process_data.py' related to the ETL process. The csv files 'disaster_categories.csv' and 'disaster_messages.csv' would be the data inputs to the ETL process. The process data is written to the SQLLite db DisasterResponse.db
 2. 'models' directory contains the 'train_classifer.py' which would train the model. The resultant model would be written to the file 'classifier.pkl' 
-3. 'app' director contains the flask web application files. The web application provides a dashboard including charts indicating the distribution of the data set. It also provides a utility to scan messages and output the relavent category based on the trained model.
+3. 'app' directory contains the flask web application files. The web application provides a dashboard including charts indicating the distribution of the data set. It also provides a utility to scan messages and output the relavent category based on the trained model.
 ### Instructions
 1. Run the following commands in the project's root directory to set up your database and model.
 
