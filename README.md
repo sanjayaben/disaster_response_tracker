@@ -7,8 +7,13 @@ The objective of the project is to illustrate how a machine learning pipeline co
 1. Read labelled text from csv files and process them to create a denormalised data structure.
 2. Train a classification model using the GridSearchCV and export the model
 3. Build a web application to utilize the model and visualize the data.
+
 The categories and the messages are available in two csv files which then needs to be read and merged in to a single data frame. The category string is further split into individual columns and reduced to 0 and 1 numerical values where 1 represents a correct labelling of the category. The dataframe is then saved to a SQLLite database for further analysis. 
+
 The feature list is constructed from the messages. nltk wordtokenizer is used to tokenize the words and CountVectorizer and TfidfTransformer is used extract a numerical representation of the feature set. RandomForestClassifier is used for the classification and executed with the GridSearchCV create a pipeline. The performance of the model is analysed using the classification_report untility. 
+
+The web application displays number of interesting graphs which shows the distribution of the categories. There is also a utility to type in a message and see how the message is categorised by the model. For some of the categories a link is available for an organisation of interest regarding the paticular category. **Note that only applicable categories will be listed and not all**
+
 ### File Descriptions
 1. 'data' directory contains the python script 'process_data.py' related to the ETL process. The csv files 'disaster_categories.csv' and 'disaster_messages.csv' would be the data inputs to the ETL process. The process data is written to the SQLLite db DisasterResponse.db
 2. 'models' directory contains the 'train_classifer.py' which would train the model. The resultant model would be written to the file 'classifier.pkl' 
