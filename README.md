@@ -1,12 +1,14 @@
 # Disaster Response Pipeline Project
 ### Installation
-The code should run with no issues using Python versions 3.X. The main libraries used include padas,sklearn and nltk
+The code should run with no issues using Python versions 3.X. The main libraries used include pandas,sklearn and nltk
 
 ### Project Motivation
 The objective of the project is to illustrate how a machine learning pipeline could be used for natural language processing. It fundamentally includes following steps.
 1. Read labelled text from csv files and process them to create a denormalised data structure.
 2. Train a classification model using the GridSearchCV and export the model
 3. Build a web application to utilize the model and visualize the data.
+The categories and the messages are available in two csv files which then needs to be read and merged in to a single data frame. The category string is further split into individual columns and reduced to 0 and 1 numerical values where 1 represents a correct labelling of the category. The dataframe is then saved to a SQLLite database for further analysis. 
+The feature list is constructed from the messages. nltk wordtokenizer is used to tokenize the words and CountVectorizer and TfidfTransformer is used extract a numerical representation of the feature set. RandomForestClassifier is used for the classification and executed with the GridSearchCV create a pipeline. The performance of the model is analysed using the classification_report untility. 
 ### File Descriptions
 1. 'data' directory contains the python script 'process_data.py' related to the ETL process. The csv files 'disaster_categories.csv' and 'disaster_messages.csv' would be the data inputs to the ETL process. The process data is written to the SQLLite db DisasterResponse.db
 2. 'models' directory contains the 'train_classifer.py' which would train the model. The resultant model would be written to the file 'classifier.pkl' 
@@ -19,7 +21,7 @@ The objective of the project is to illustrate how a machine learning pipeline co
     - To run ML pipeline that trains classifier and saves
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl dev`
 
-2. Note that for the model building there is an additional profile parameter passed. The accepted parameter values are 'dev' and 'prod'. This is introduced to build a model in environments where there are resource constraints. When running under the 'dev' profile, only 5000 first records would be used for training and also the GridSeachCV would consider lesser number of paramaters. 
+2. Note that for the model building there is an ***additional profile parameter passed***. The accepted parameter values are 'dev' and 'prod'. This is introduced to build a model in environments where there are resource constraints. When running under the 'dev' profile, **only 5000 first records would be used for training and also the GridSeachCV would consider lesser number of paramaters.*** 
 
 3. Run the following command in the app's directory to run your web app.
     `python run.py`
